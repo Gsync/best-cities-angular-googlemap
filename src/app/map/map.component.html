@@ -1,0 +1,39 @@
+<div *ngIf="apiLoaded | async">
+  <google-map #gmap width="100%" height="95vh" [center]="center" [options]="mapOptions">
+    <map-marker
+      #marker="mapMarker"
+      *ngFor="let city of cities"
+      [position]="getMarkerPosition(city)"
+      [options]="markerOptions"
+      [label]="city?.Rank + ''"
+      [title]="city?.City + ''"
+      (mapClick)="openInfo(marker, city)"
+    >
+    </map-marker>
+    <map-info-window>
+      <div style="font-size: large; font-weight: 400;">{{ infoContent?.City }}</div>
+      <div>{{ infoContent?.Country }}</div>
+      <div class="info-content-detail">
+        Metro Population: {{ infoContent?.Population | number }}
+      </div>
+      <div class="info-content-detail">
+        Place: {{ infoContent?.Place }}
+      </div>
+      <div class="info-content-detail">
+        Product: {{ infoContent?.Product }}
+      </div>
+      <div class="info-content-detail">
+        Programming: {{ infoContent?.Programming }}
+      </div>
+      <div class="info-content-detail">
+        People: {{ infoContent?.People }}
+      </div>
+      <div class="info-content-detail">
+        Prosperity: {{ infoContent?.Prosperity }}
+      </div>
+      <div class="info-content-detail">
+        Promotion: {{ infoContent?.Promotion }}
+      </div>
+    </map-info-window>
+  </google-map>
+</div>

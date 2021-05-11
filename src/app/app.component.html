@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>World's Best Cities 2021 Google Map</span>
+</mat-toolbar>
+<mat-drawer-container class="sidenav-container" autosize>
+  <mat-drawer #sidenav mode="side" opened class="sidenav">
+    <app-search-list [cities]="cities"></app-search-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-map [cities]="cities"></app-map>
+  </mat-drawer-content>
+</mat-drawer-container>
